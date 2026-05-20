@@ -111,15 +111,19 @@ ca_lookup <- c("1_colorectal" = "Colorectal Cancer",
                "8_bladder" = "Bladder Cancer")
 
 p <- hr_dat %>%
-  mutate(model_txt = factor(model, labels = c("bold(Crude)",
-                                              "bold('Adjusted for ' * confounders^a)",
-                                              "bold('Adjusted for ' * frailty^b)",
-                                              "bold(atop('Adjusted for ' * confounders^a, 'and ' * frailty^b))"))) %>% 
+  mutate(model_txt1 = factor(model, labels = c("bold(Crude)",
+                                               "bold('Adjusted for ' * confounders^a)",
+                                               "bold('Adjusted for ' * frailty^b)",
+                                               "bold(atop('Adjusted for ' * confounders^a, 'and ' * frailty^b))")),
+         model_txt2 = factor(model, labels = c("bold('Crude')",
+                                               "bold('Confounder-adjusted')",
+                                               "bold('Frailty-adjusted')",
+                                               "bold('Fully adjusted')"))) %>% 
   ggplot(aes(HR, pri_site)) +
   geom_vline(xintercept = 1, linetype = 2, colour = "gray50") +
   geom_errorbar(aes(xmin = HR_L, xmax = HR_U), width = 0.2) +
   geom_point(aes(colour = model, shape = model), size = 1.1, fill = "white", stroke = 0.3) +
-  facet_grid(~ model_txt, labeller = label_parsed) +
+  facet_grid(~ model_txt2, labeller = label_parsed) +
   scale_x_log10(breaks = c(0.5, 0.8, 1, 1.25, 2), limits = c(0.5, 2),
                 labels = ~ round(.x, 2)) +
   scale_y_discrete(limits = rev, labels = ca_lookup) +
@@ -133,7 +137,7 @@ p <- hr_dat %>%
         axis.ticks.x = element_line(),
         legend.position = "none")
 
-# ggsave("figure/Figure_2.jpeg", p, width = 7, height = 3, dpi = 600)
+# ggsave("figure/Figure_2.pdf", p, width = 7, height = 2.8, dpi = 600)
 
 #################################
 #--- Supplementary Materials ---#
@@ -223,4 +227,3 @@ tabS2 <- bind_rows(baseline_char_table(mutate(ca_dat, all = 'all'), all),
                    baseline_char_table(mutate(ca_dat, do_palli = factor(do_palli)), do_palli))
 
 # openxlsx::write.xlsx(tabS2, "Table_S2.xlsx")
-
