@@ -1,1 +1,3 @@
-H.-C.Chiu, C.-J.Chiang, J.-R.Jhuang, D.-R.Tsai, et al., “**Association of Cancer Care Quality Certification With Survival Across Multiple Cancer Types: A Population-Based Cohort Study in Taiwan**”, *International Journal of Cancer* (2026): 1–8, https://doi.org/10.1002/ijc.70516.
+### Citation
+
+- H.-C. Chiu, C.-J. Chiang, J.-R. Jhuang, D.-R. Tsai, et al., “**Association of Cancer Care Quality Certification With Survival Across Multiple Cancer Types: A Population-Based Cohort Study in Taiwan**”, *International Journal of Cancer* (2026): 1–8, https://doi.org/10.1002/ijc.70516.
